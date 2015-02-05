@@ -8,8 +8,6 @@ install:
   - if [ x"$PPA" = "xyes" ] ; then sudo add-apt-repository ppa:pi-rho/dev -y; fi
   - sudo apt-get update -q
   - sudo apt-get install vim-gtk
-
-before_sctipt:
   - git clone https://github.com/thinca/vim-themis
 
 script:
