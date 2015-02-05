@@ -15,3 +15,21 @@ function! s:suite.shellutils_ls()
     call s:assert.equals(len(list_result), 4)
     call s:assert.equals(list_result, ["3:", "a", "b", "c"])
 endfunction
+
+function! s:suite.shellutils_mkdir()
+    let directory = '/tmp/test'
+    call Call('shellutils#mkdir', directory)
+    Expect isdirectory(directory) to_be_true
+  end
+
+  it '/tmp/spaced path'
+    let directory = '/tmp/spaced path'
+    call Call('shellutils#mkdir', directory)
+    Expect isdirectory(directory) to_be_true
+  end
+
+  it 'already exists'
+    let directory = '/tmp/test'
+    Expect Call('shellutils#mkdir', directory) to_be_false
+  end
+endfunction
